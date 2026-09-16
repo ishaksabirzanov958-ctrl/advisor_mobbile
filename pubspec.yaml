@@ -1,0 +1,23 @@
+name: advisor_mobile
+description: "Personal AI Career & Skill Graph Advisor мобилдик колдонмосу"
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # http — backend'ге (Spring Boot серверибизге) HTTP-сурам жиберүү үчүн китепкана.
+  http: ^1.2.2
+  # shared_preferences — телефондун эсинде кичине маалыматты (логин/сырсөз, userId)
+  # сактоо үчүн, ошондо колдонуучу ар жолу кайра киргизбесин.
+  shared_preferences: ^2.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
