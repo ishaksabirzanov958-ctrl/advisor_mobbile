@@ -9,10 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  # http — backend'ге (Spring Boot серверибизге) HTTP-сурам жиберүү үчүн китепкана.
   http: ^1.2.2
-  # shared_preferences — телефондун эсинде кичине маалыматты (логин/сырсөз, userId)
-  # сактоо үчүн, ошондо колдонуучу ар жолу кайра киргизбесин.
   shared_preferences: ^2.3.2
 
 dev_dependencies:
