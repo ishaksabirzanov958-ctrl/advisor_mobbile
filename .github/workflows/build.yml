@@ -1,20 +1,68 @@
-name: advisor_mobile
-description: "Personal AI Career & Skill Graph Advisor мобилдик колдонмосу"
-publish_to: "none"
-version: 0.1.0
+name: Build Android APK
 
-environment:
-  sdk: ">=3.3.0 <4.0.0"
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
 
-dependencies:
-  flutter:
-    sdk: flutter
-  http: ^1.2.2
-  shared_preferences: ^2.3.2
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
 
-flutter:
-  uses-material-design: true
+      - name: Generate missing platform folders
+        run: flutter create . --platforms=android
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --debug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: advisor-mobile-apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
+name: Build Android APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+
+      - name: Generate missing platform folders
+        run: flutter create . --platforms=android
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --debug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: advisor-mobile-apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
